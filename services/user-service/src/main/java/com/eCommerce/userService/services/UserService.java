@@ -4,6 +4,7 @@ import com.eCommerce.common.domain.User;
 import com.eCommerce.common.repositories.UserRepository;
 import com.eCommerce.userService.dtos.CreateUserDto;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class UserService {
         return repo.save(CreateUserDto.toEntity(user));
     }
 
+    @Cacheable(value = "users")
     public List<User> getAllUsers() {
         return repo.findAll();
     }

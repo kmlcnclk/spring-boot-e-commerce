@@ -1,0 +1,28 @@
+package com.eCommerce.userService.controllers;
+
+import com.eCommerce.common.domain.User;
+import com.eCommerce.userService.dtos.CreateUserDto;
+import com.eCommerce.userService.services.UserService;
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/users")
+@AllArgsConstructor
+public class UserController {
+
+    private final UserService service;
+
+    @PostMapping
+    public User createUser(@RequestBody @Valid CreateUserDto user) {
+        return service.saveUser(user);
+    }
+
+    @GetMapping
+    public List<User> getUsers() {
+        return service.getAllUsers();
+    }
+}

@@ -1,17 +1,19 @@
-package com.eCommerce.orderService;
+package com.eCommerce.authService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.eCommerce.orderService", "com.eCommerce.common"})
+@ComponentScan(basePackages = {"com.eCommerce.authService", "com.eCommerce.common"})
 @EnableMongoRepositories(basePackages = "com.eCommerce.common.repositories")
-public class OrderServiceApplication {
+@EnableCaching
+public class AuthServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderServiceApplication.class, args);
+        SpringApplication.run(AuthServiceApplication.class, args);
     }
 }

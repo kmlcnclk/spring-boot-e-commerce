@@ -1,5 +1,6 @@
 package com.eCommerce.orderService.controllers;
 
+import com.eCommerce.common.annotations.ValidateToken;
 import lombok.AllArgsConstructor;
 import com.eCommerce.orderService.dtos.OrderCreatedEvent;
 import com.eCommerce.orderService.services.OrderProducer;

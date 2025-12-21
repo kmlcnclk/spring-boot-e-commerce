@@ -1,5 +1,6 @@
 package com.eCommerce.userService.controllers;
 
+import com.eCommerce.common.annotations.ValidateToken;
 import com.eCommerce.common.domain.User;
 import com.eCommerce.userService.dtos.CreateUserDto;
 import com.eCommerce.userService.services.UserService;
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @AllArgsConstructor
+@ValidateToken
 public class UserController {
 
     private final UserService service;

@@ -3,3 +3,4 @@ rootProject.name = "spring-boot-e-commerce"
 include 'common'
 include 'services:order-service'
 include 'services:user-service'
+include 'services:auth-service'

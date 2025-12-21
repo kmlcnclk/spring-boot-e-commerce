@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -23,10 +24,11 @@ public class UserService {
 
     @Cacheable(value = "users")
     public List<User> getAllUsers() {
+        System.out.println("123");
         return repo.findAll();
     }
 
-    public User getByEmail(String email) {
+    public Optional<User> getByEmail(String email) {
         return repo.findByEmail(email);
     }
 }

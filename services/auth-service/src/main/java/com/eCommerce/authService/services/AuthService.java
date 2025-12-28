@@ -40,7 +40,7 @@ public class AuthService {
 
         userRepository.save(user);
 
-        String token = jwtService.generateToken("asdasd");
+        String token = jwtService.generateToken(user.getName());
         return new AuthResponse(token);
     }
 

@@ -24,7 +24,6 @@ public class UserService {
 
     @Cacheable(value = "users")
     public List<User> getAllUsers() {
-        System.out.println("123");
         return repo.findAll();
     }
 

@@ -5,6 +5,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -14,20 +15,13 @@ import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
 
+@Setter
 @Component
 @ConfigurationProperties(prefix = "jwt")
 public class JwtService {
 
     private String secret;
     private long expiration; // milliseconds
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-
-    public void setExpiration(long expiration) {
-        this.expiration = expiration;
-    }
 
     /* ===================== TOKEN GENERATION ===================== */
 

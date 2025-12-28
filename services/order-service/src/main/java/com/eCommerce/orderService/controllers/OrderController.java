@@ -1,11 +1,11 @@
 package com.eCommerce.orderService.controllers;
 
-import com.eCommerce.common.annotations.ValidateToken;
+import com.eCommerce.orderService.services.OrderService;
 import lombok.AllArgsConstructor;
-import com.eCommerce.orderService.dtos.OrderCreatedEvent;
-import com.eCommerce.orderService.services.OrderProducer;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
@@ -13,13 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/order")
 public class OrderController {
 
-    private final OrderProducer producer;
+    private final OrderService orderService;
 
-    @GetMapping("/send")
-    public String send() {
-        producer.publishOrderCreated(
-                new OrderCreatedEvent("12345", 199.99)
-        );
-        return "Message sent!";
-    }
+    @GetMapping("/createOrder")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createOrder() { orderService.createOrder(); }
 }

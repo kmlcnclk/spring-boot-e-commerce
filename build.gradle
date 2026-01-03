@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.4.1' apply false
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.graalvm.buildtools.native' version '0.10.3'
 }
 
 group = 'com.eCommerce'
@@ -11,6 +12,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.graalvm.buildtools.native'
 
     repositories {
         mavenCentral()
@@ -19,6 +21,7 @@ subprojects {
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(21)
+            vendor = JvmVendorSpec.GRAAL_VM
         }
     }
 
@@ -30,6 +33,8 @@ subprojects {
     }
 
     dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+
         // Lombok for all modules
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
